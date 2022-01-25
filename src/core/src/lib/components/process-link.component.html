@@ -1,0 +1,10 @@
+<section fxLayout="row"
+         fxLayoutAlign="start center"
+         class="cursor-pointer rounded m4 p8"
+         [ngClass]="linkStyle()"
+         [style.width.px]="size"
+         (click)="action.emit(process)">
+  <p class="m4"
+     fxFlex>{{process.name}}</p>
+  <mat-icon [class]="iconClass">{{icon}}</mat-icon>
+</section>

@@ -1,0 +1,14 @@
+<p class="mat-title m8">Staffing Workflows</p>
+<ng-template #loading>
+  <mat-progress-bar mode="indeterminate"
+                    color="accent"></mat-progress-bar>
+</ng-template>
+<ng-container *ngIf="app.workflows$ | async as workflows else loading">
+  <section fxLayout="row | wrap"
+           fxLayoutAlign="start start"
+           class="p8">
+    <workflow-card *ngFor="let workflow of workflows"
+                   [workflow]="workflow"
+                   (action)="view($event)"></workflow-card>
+  </section>
+</ng-container>

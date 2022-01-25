@@ -1,0 +1,33 @@
+<ng-template #loading>
+  <mat-progress-bar mode="indeterminate"
+                    color="accent"></mat-progress-bar>
+</ng-template>
+<ng-container *ngIf="workflow else loading">
+  <h1 class="mat-title m8">{{workflow.name}}</h1>
+  <p class="m8">{{workflow.description}}</p>
+  <mat-divider class="my8"></mat-divider>
+  <section fxLayout="row"
+           fxLayoutAlign="start start">
+    <section fxLayout="column"
+             fxLayoutAlign="start stretch"
+             class="p8">
+      <h2 class="mat-subheading-2 m4"
+          fxFlexAlign="center">Processes</h2>
+      <process-link *ngFor="let process of workflow.processes"
+                    [process]="process"
+                    [selected]="selected(process)"
+                    [current]="current(process)"
+                    (action)="select($event)"></process-link>
+    </section>
+    <section fxLayout="column"
+             fxLayoutAlign="start stretch"
+             class="p8"
+             fxFlex>
+      <ng-container *ngIf="process">
+        <process-details [process]="process"></process-details>
+      </ng-container>
+      <p *ngIf="!(process)"
+         class="m4 mat-body-strong">Select a Process to view its details.</p>
+    </section>
+  </section>
+</ng-container>

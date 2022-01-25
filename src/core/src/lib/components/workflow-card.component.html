@@ -1,0 +1,8 @@
+<section fxLayout="column"
+         fxLayoutAlign="start stretch"
+         class="background-card elevated rounded card-outline-accent cursor-pointer p8 m4"
+         [style.width.px]="size"
+         (click)="action.emit(workflow)">
+  <p class="mat-body-strong m4">{{workflow.name}}</p>
+  <p class="m4">{{workflow.description}}</p>
+</section>
